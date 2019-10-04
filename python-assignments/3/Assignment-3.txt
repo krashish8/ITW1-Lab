@@ -1,0 +1,281 @@
+1. Write a Python program to read an entire text file.
+Input: test.txt
+Output: Contect of file test.txt i.e. What is Python language?
+Python is a widely used high-level, general-purpose, interpreted, dynamic programming
+language.Its design philosophy emphasizes code readability, and its syntax allows programmers to
+express concepts in fewer lines of code than possible in
+languages such as C++ or Java.
+
+		with open('test.txt', 'r') as f:
+			print(f.read())
+
+
+
+
+2. Write a Python program to read first n lines of a file.
+Input: test.txt
+Output: What is Python language?
+Python is a widely used high-level, general-purpose, interpreted, dynamic programming
+language.Its design philosophy emphasizes code readability, and its syntax allows programmers to
+express concepts in fewer lines of code than possible in
+
+		with open("test.txt", "r") as f:
+		    n = int(input("Enter number of lines: "))
+		    for i in range(n):
+		        print(f.readline(), end = "")
+
+
+
+
+3. Write a Python program to append text to a file and display the text.
+Input: Content of myfile.txt i.e. Hello everyone !
+Output: Hello everyone !
+This is ITW1 class.
+
+		with open("myfile.txt", "a") as f:
+		    s = input("Enter the string: ")
+		    f.write(s)
+
+		with open("myfile.txt", "r") as f:
+		    print(f.read())
+
+
+
+
+
+4. Write a Python program to read last n lines of a file.
+Input: Content of text.txt
+Output: languages such as C++ or Java. (last line)
+
+		with open("test.txt", "r") as f:
+		    n = int(input("Enter number of lines from last to read: "))
+		    for i in f.readlines()[-n:]:
+		        print(i, end = "")
+
+
+
+
+
+5. Write a Python program to remove an empty tuple(s) from a list of tuples
+Input: Contect of file test.txt
+Output: ['general-purpose,', 'object-oriented,']
+
+def func(l):
+    ans = []
+    for i in l:
+        if len(i)!=0:
+            ans.append(i)
+    return ans
+
+l = [(), (), ('',), ('a', 'b'), ('a', 'b', 'c'), ('d')]
+print(func(l))
+
+
+
+
+
+6. Write a Python program to count the number of lines in a text file.
+Input: Content of test.txt
+Output: Number of lines in the file: 4
+
+		with open("test.txt", "r") as f:
+		    print(len(f.readlines()))
+
+
+
+
+
+7. Write a Python program to count the frequency of words in a file.
+Input: Contect of file text.txt
+Output: Number of words in the file : Counter({'and': 6, 'a': 3, 'Python': 3, 'is': 3, ... })
+
+		import string
+		def removePunc(w):
+		    s = string.punctuation
+		    ans = ""
+		    for c in w:
+		        if c not in s:
+		            ans = ans + c
+		    return ans
+
+		with open("test.txt", "r") as f:
+		    l = f.read().split()
+		    freq = dict()
+		    for i in l:
+		        i = removePunc(i)
+		        if i in freq:
+		            freq[i] += 1
+		        else:
+		            freq[i] = 1
+		    print(freq)
+
+
+
+
+
+
+8. Write a Python program to get the file size of a text file in bytes.
+Input: test.txt
+Output: File size in bytes of a file test.txt is: 765
+
+		import os.path
+		print(os.path.getsize("test.txt"))
+
+
+
+
+
+9. Write a Python program to write a list content to a file.
+Input: color = ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']
+Output: Red
+Green
+White
+Black
+Pink
+Yellow
+
+		l = input("Enter the list: ").split()
+
+		with open("test.txt", "a") as f:
+		    for i in l:
+		        f.write(i+"\n")
+
+
+
+
+
+10. Write a Python program to combine each line from first file with the corresponding line in second
+file.
+Example: Input: Content of text file1 i.e., (Python Exercises, Java Exercises) and Content of text
+file_2 i.e., (Red, Green)
+Output: Python Exercises
+Red
+Java Exercises
+Green
+
+		with open("file1.txt", "r") as f1:
+		    with open("file2.txt", "r") as f2:
+		        for i, j in zip(f1.readlines(), f2.readlines()):
+		            print(i+j)
+
+
+
+
+
+11. Write a Python program to read a random line from a file.
+Example : Input: Content of file test.txt
+Output: languages such as C++ or Java.
+
+		with open("test.txt", "r") as f:
+		    l = len(f.readlines())
+		    i = random.randint(0,l)
+		    f.seek(0)
+		    print(f.readlines()[i])
+
+
+
+
+
+12. Write a program that accepts sequence of lines as input and prints the lines after making all
+characters in the sentence capitalized.
+Example: Input: Hello everyone
+Practice makes perfect
+Output: HELLO EVERYONE
+PRACTICE MAKES PERFECT
+
+		l = int(input("Enter the number of lines: "))
+		print("Enter the sequence of lines:")
+
+		ans = []
+
+		for i in range(l):
+		    s = input()
+		    ans.append(s.upper())
+		    
+		for i in ans:
+		    print(i)
+
+
+
+
+
+13. Write a python code to split the word from the input file.
+Example: Input: Python Exercises
+Java Exercises
+Output: ['Python', 'Exercises']
+['Java', 'Exercises']
+
+		import string
+		def removePunc(w):
+		    s = string.punctuation
+		    ans = ""
+		    for c in w:
+		        if c not in s:
+		            ans = ans + c
+		    return ans
+
+		ans = []
+
+		with open("test.txt", "r") as f:
+		    l = f.read().split()
+		    for i in l:
+		        i = removePunc(i)
+		        ans.append(i)
+
+		print(ans)
+
+
+
+
+
+14. Write a python code to find the current working directory also do the following operations:
+A. creating a new directory.
+B. create a new text file in the new directory.
+C. delete the new directory.
+Example: My current working directory: '/home/randheer/ML/File input-output'
+A. Create a new folder in my current working directory named as “newdir”
+B. In newdir, write a text file as “myfile.txt”
+C. Delete the “newdir”
+
+		import os
+
+		# Current working directory
+		cwd = os.getcwd()
+		print(cwd)
+
+		# Creating a new directory
+		try:
+		    os.mkdir('NewDirectory')
+		except FileExistsError:
+		    print("Directory already exists")
+
+		# Creating a new text file in the new directory
+		with open(cwd+"/"+"NewFile.txt", "w") as f:
+		    f.write("")
+
+		# Deleting the new directory
+		os.remove(cwd+"/"+"NewFile.txt")
+		os.rmdir("NewDirectory")
+
+		'''
+		METHOD 2
+		import shutil
+		shutil.rmtree(path)
+		'''
+
+
+
+
+
+File: test.txt
+
+What is Python language?
+Python is a widely used high-level, general-purpose, interpreted, dynamic programming language.Its design
+philosophy emphasizes code readability, and its syntax allows programmers to express concepts in fewer
+lines of code than possible in
+languages such as C++ or Java.
+Python supports multiple programming paradigms, including object-oriented, imperative and functional
+programming or procedural styles. It features a dynamic type system and automatic memory management
+and has a large and comprehensive standard library.The best way we learn anything is by practice and
+exercise questions. We have started this section for those (beginner to intermediate) who are familiar with
+Python.

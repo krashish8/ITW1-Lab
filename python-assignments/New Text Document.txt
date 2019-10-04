@@ -1,0 +1,250 @@
+1)class a:
+        def _init_(self,name):
+                self.name=name
+        def _del_(self):
+                print("instance deleted")
+ob1=a("nice")
+print(ob1.name)
+ob1.name="car"
+print(ob1.name)
+class empty:
+        pass
+
+2)class convert:
+        def _init_(self,num):
+                self.ans=int(num,16)
+        def show(self):
+                print("the number is {}".format(self.ans))
+ob1=convert("6756585ABCD")
+ob1.show()
+                
+3)class one:
+        pass
+class two(one):
+        pass
+class check:
+        def _init_(self,c1,c2):
+                self.c1=c1
+                self.c2=c2
+        def ch(self):
+                print(issubclass(self.c1,self.c2))
+ob1=check(two,one)
+print(ob1.ch())
+
+4)class parent:
+        number=2
+        def _init_(self,nice):
+                self.nice=nice
+        def _del_(self):
+                print("objcet deleted")
+class sub(parent):
+        def _init_(self,the):
+                self.the=the
+        def _del_(self):
+                print("objcet deleted")
+ob1=sub("why the")
+print(ob1.number)
+
+5)class area:
+        def _init_(self,l,b):
+                self.l=l
+                self.b=b
+        def area(self):
+            print("area of the recatngle is {}".format(self.l*self.b))
+ob1=area(2,4)
+ob1.area()
+
+6)class reverse:
+        def _init_(self,s):
+                self.s=s
+        def rev(self):
+                t=""
+                for i in range(0,len(self.s)):
+                        t=t+self.s[len(self.s)-1-i]
+                print(t)
+        def _del_(self):
+                print("object is deleted")
+ob1=reverse("nicetheveryvery")
+ob1.rev()
+
+7)class sum:
+        def sum(self,x):
+                l=[]
+                for i in range(0,len(x)):
+                        for j in range(0,len(x)):
+                                for k in range(0,len(x)):
+                                        if x[i]+x[j]+x[k]==0:
+                                              m=[x[i],x[j],x[k]]
+                                              m.sort()
+                                              if m not in l:
+                                                      l.append(m)
+                return l                                      
+                                                      
+ob1=sum()
+print(ob1.sum([-25, -10, -7, -3, 2, 4, 8, 10]))                                                    
+
+8)class check:
+        flag=0
+        def _init_(self,x,t):
+                self.x=x
+                self.t=t
+        def find(self):
+                for i in range(0,len(self.x)):
+                        for j in range(0,len(self.x)):
+                                if self.x[i]+self.x[j]==self.t:
+                                        print(i+1,j+1)
+                                        flag=1
+                                        break
+                        if flag==1:
+                                break
+ob1=check([10,20,10,40,50,60,70],50)
+ob1.find()                    
+
+9)import numpy as n
+a=[10,40,30,20]
+b=n.asarray(a).reshape(2,2)
+print(n.sort(b,axis=0))
+print(n.sort(b,axis=1))
+print(n.sort(b.reshape(1,4),axis=1))
+
+10)import numpy as n
+x=[0,1,2,4,5]
+for i in range(0,len(x)):
+        print(n.sin(x[i]),n.cos(x[i]),n.tan(x[i]))
+
+11)import numpy as n
+x=[1,2,3,4,5,6,7,8,9]
+a=n.asarray(x).reshape(3,3)
+sum=0
+for i in range(0,3):
+        sum=sum+a[i][i]
+print(sum)
+
+12)import numpy as n
+a=n.ones(25).reshape(5,5)
+for i in range(0,5):
+        for j in range(0,5):
+                if i==0 or j==0 or i==4 or j==4:
+                        a[i][j]=1
+                else:
+                        a[i][j]=0
+print(a)
+
+13)import numpy as n
+x=[1,2,3,4,5]
+a=n.asarray(x)
+print(a.size)
+print(a.itemsize)
+print(a.itemsize*a.size)
+
+14)import numpy as n
+a=[1,2,3,4]
+b=['Red', 'Green', 'White', 'Orange'] 
+c=[12.20,15,20,40]
+a=n.asarray(a).reshape(4,1)
+b=n.asarray(b).reshape(4,1)
+c=n.asarray(c).reshape(4,1)
+a=n.hstack((a,b,c))
+print(a)
+
+15)import numpy as n
+x=[1,2,3,4,5]
+a=n.asarray(x)
+a=n.insert(a,0,6)
+a=n.insert(a,6,7)
+print(a)
+
+16)import pandas as p
+a=p.Series([1,2,3,4,5])
+b=p.Series([1,2,3,4,5])
+a+b
+print(a+b)
+print(a-b)
+print(a/b)
+print(a*b)
+
+17)import numpy as n
+import pandas as p
+x=[1,2,3,4,5]
+a=n.asarray(x)
+b=p.Series(a)
+print(b)
+
+18)import numpy as n
+import pandas as p
+b=p.DataFrame({'X':[78,85,96,80,86], 'Y':[84,94,89,83,86],'Z':[86,97,96,72,83]},index=n.arange(1,6,1))
+print(b)
+
+19)import numpy as n
+import pandas as p
+b=p.DataFrame({'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, n.nan, 9, 20, 14.5, n.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']},
+ index=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+print(b)
+
+20)import pandas as p
+import numpy as n
+b=p.DataFrame({'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, n.nan, 9, 20, 14.5, n.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']},
+ index=[1,2,3,4,5,6,7,8,9,10])
+print(b.loc[1],b.loc[2],b.loc[3])
+
+21)import pandas as p
+import numpy as n
+b=p.DataFrame({'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, n.nan, 9, 20, 14.5, n.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']},
+ index=[1,2,3,4,5,6,7,8,9,10])
+print(b.loc[b['score'].isnull()])
+
+22)import pandas as p
+import numpy as n
+b=p.DataFrame({'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, n.nan, 9, 20, 14.5, n.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']},
+ index=[1,2,3,4,5,6,7,8,9,10])
+for i in range(1,11):
+        if b.loc[i]['score']>15 and b.loc[i]['score']<20:
+                print(b.loc[i])
+
+23)import pandas as p
+import numpy as n
+b=p.DataFrame({'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, n.nan, 9, 20, 14.5, n.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']},
+ index=[1,2,3,4,5,6,7,8,9,10])
+for i in range(1,11):
+        if b.loc[i]['score']>15 and b.loc[i]['attempts']<=2:
+                print(b.loc[i])
+
+24)import matplotlib.pyplot as p
+import numpy as n
+a=[1,1,1,1,1,1,1,1,2,2,2,3,3,3,3,3,3,3,3,5,4,4,4,4,5,5,5,5,2.8,2.4,6,5.1,5.2,5.3,5.47,7,3.86,7]
+p.hist(a)
+p.show(a)
+b=[1,2,3]
+e=[1,2,3,4,5,6]
+c=["nice","very","why"]
+p.bar(c,b)
+p.show(c,b)
+d=[]
+for i in range(0,len(e)):
+        d.append(e[i]+2)
+p.plot(e,d)
+p.show(e,d)
+f=[7.78,1.2,66,4,5,6]
+y=[3.777,4,5,11,45,23]
+p.scatter(f,y)
+p.show(f,y)

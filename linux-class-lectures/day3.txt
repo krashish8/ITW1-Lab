@@ -1,0 +1,125 @@
+grep unix grepfile
+grep -i "UNix" grepfile // Case insensitive search
+grep -c "unix" grepfile //. Displaying the count of number of matches
+grep uni grepfile
+grep -w "uni" grepfile // Checking for the whole words in a file
+grep -o "unix" grepfile // Displaying only the matched pattern
+grep -n "unix" grepfile // Show line number while displaying the output
+grep -v "unix" grepfile // Not mached lines
+grep "^unix" grepfile //Matching the lines that start with a string : The ^ regular expression pattern.
+grep "os$" grepfile //Matching the lines that end with a string : The $ regular expression pattern.
+cmp chap1 chap2 // first difference only
+cmp -l chap1 chap2 // 1st differ position, 2nd value of differ position in first file and 3rd for 2nd file//
+comm chap11 chap22 // 1st first file diff, 2nd is 2nd file diff, 3rd is common
+comm -12 chap11 chap22 // -1 is supress first file diff, -2 is supress second file diff
+diff a1 a2 // a : add, c : change, d : delete
+diff -c a1 a2 // marking context
+count="ls -l"
+$count
+echo $count
+mydir=`ls -l`
+$mydir
+echo $mydir
+x=5
+echo $x
+echo $x+5
+man bc
+echo "12+5" | bc
+echo "$x+5" | bc
+echo "10^2" | bc
+x=`echo "12+5" | bc`
+echo $x
+echo "var=10;var" | bc
+echo "var=10;var^=2;var" | bc
+x=`echo "var=500;var%=7;var" | bc`
+echo $x
+echo "var=10;++var" | bc 
+echo "var=10;var++" | bc
+echo "var=10;--var" | bc
+echo "var=10;var--" | bc
+echo "10>5" | bc
+echo "1==2" | bc
+echo "10 && 5" | bc
+echo "0 || 0" | bc
+echo "! 0" | bc
+pi=`echo "4*a(1)" | bc -l`
+echo "scale($pi)" | bc -l
+echo "obase=2;15" | bc -l
+echo "obase=8;9" | bc -l
+echo "ibase=2;1111" | bc -l
+echo "ibase=2;obase=8;10" | bc -l
+echo 'n=8;m=10;if(n>m) print "n is greater" else print "m is greater" ' | bc -l // conditional
+echo "for(i=1; i<=10; i++) {i;}" | bc // iteration
+man ps
+//PID – the unique process ID
+//TTY – terminal type that the user is logged into
+//TIME – amount of CPU in minutes and seconds that the process has been running
+//CMD – name of the command that launched the process.
+ps -e //View Processes
+ps -A //View Processes
+ps -a // View Processes not associated with a terminal
+ps -T //View all processes associated with this terminal 
+ps -r //View all the running processes
+ps -x // View all processes owned by you
+ps -p process_id  //View process by process ID
+ps --pid process_id  // View process by process ID
+ps p process_id  //View process by process ID
+//Select by parent process ID
+ps -p 805
+ps --ppid 805
+ps -af //Use -f to view full-format listing.
+ps -F // Use -F to view Extra full format
+ps -aN --format cmd,pid,user,ppid // To view process according to user-defined format.
+man kill
+kill -9 process_id
+man chmod
+ls -l note
+//u -- user
+//g -- group
+//o -- others
+//a -- all
+//+ -- assign permission
+//- -- remove permission
+//= -- assign absolute permission
+//r -- read     4
+//w -- write    2
+//x -- execute  1
+cat note
+ls -l note
+chmod u+x note
+ls -l note
+chmod u-x,go+r note ; ls -l note
+chmod ugo=r note  // Asolute assignment and remove all
+chmod a=r note
+chmod 721 note
+ls -ld *
+chmod -R a+x note
+chmod -R 644 note
+//Shell Script 
+gedit firstprog.sh
+// Execution
+chmod +x firstprog.sh
+./firstprog.sh
+alias showdir='cd $1 ; ls -l'
+showdir demo
+man lp
+pr emp.txt | lp
+pr -3 emp.txt | lp
+pr -tn -d -o emp.txt
+head emp.txt
+head -3 emp.txt
+tail emp.txt
+head -5 emp.txt | tee shortlist
+uniq emp.txt
+cut -c 6-22,12-25 shortlist
+cut -d \| -f 2,3 shortlist | tee cutlist1
+cut -d "|" -f 1,4- shortlist > cutlist2
+paste
+paste cutlist 1 cutlist2
+paste -d \| cutlist1 cutlist2
+man sort
+sort -t "|" -r emp.txt
+sort -t \| +2 -3 emp.txt    // -c for checking  -u for unique  
+man nl
+nl emp.txt
+

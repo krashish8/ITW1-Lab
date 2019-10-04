@@ -1,0 +1,53 @@
+1. Count the total number of files in the directory /usr/lib starting with 'lib' and print output in a count.txt file.
+
+ls /usr/lib/lib* -d | wc -l > count.txt
+
+
+2. List all hidden files in your home directory and save it in a list.txt file in decreasing order of their word count.
+
+## ls -d .* -S > list.txt
+
+
+3. List all the processes belonging to root & output in a processes.txt file.
+
+ps -u root -U root > processes.txt
+
+
+4. Given an input file, write a command sequence to find the count of each word.
+
+cat input.txt | tr ' ' '\n' | sort | uniq -c
+
+
+5. How will you print the login names of all users on a system?
+
+users
+
+
+6. What is the command to find remaining disk space in unix server ? Also find the method to see
+command line history ?
+
+df / -h
+
+
+7. Write a command to copy one file into another ? Also find, how to concatenate the files.
+
+cat file1 >> file2
+cat file1 file2 > file3
+
+
+8. What are the commands in the unix for file system commands, processes control command, and
+utilities programmes command ?
+
+File System Commands - ls, mkdir, mv, cd, rm, rmdir, cp, pwd, touch, chmod
+Processes control command - top, kill, free, ps
+Utilities programmes command - date, cal, man, echo
+
+
+9. Write a command to find the list of all the files in the current directory in long format, sorted by size, and smallest first.
+
+ls -l -r -S
+
+
+10. Write a command that will output the sorted contents of a file named IN.txt and place the output in another file named OUT.txt while at the same time excluding duplicate entries.
+
+sort cnt | uniq

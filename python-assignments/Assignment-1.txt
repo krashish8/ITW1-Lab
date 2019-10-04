@@ -1,0 +1,395 @@
+1
+"""
+Python program to get a string made of the first 2 and the last 2 chars from a given string.
+If the string length is less than 2, return instead of the empty string
+"""
+
+def func(s):
+    if (len(s) < 2):
+        return
+    return s[:2] + s[-2:]
+
+
+s = input("Enter the string: ")
+print(func(s))
+
+
+
+2
+"""
+Python program to get a string from a given string where all occurrences of its first char have
+been changed to '$', except the first char itself
+"""
+
+s = input("Enter the string: ")
+t = ""
+for i in range(len(s)):
+    if i == 0:
+        t = t + s[i]
+    elif s[i] == s[0]:
+        t = t + "$"
+    else:
+        t = t + s[i]
+print("Expected string: "+t)
+
+
+
+3
+"""
+Python program to find the first appearance of the substring 'not' and 'poor' from a given
+string, if 'not' follows the 'poor', replace the whole 'not'...'poor' substring with 'good'. Return the
+resulting string.
+"""
+
+s = input("Enter the string: ")
+i = s.find('not')
+j = s.find('poor')
+if i < j:
+    print ("Result: "+s[:i] + "good" + s[j+4:])
+else:
+    print ("Result: "+s)
+
+
+4
+'''
+Python function to insert a string in the middle of a string
+'''
+
+def insert_string_middle(s1, s2):
+    pos = len(s1)//2
+    s1 = s1[:pos] + s2 + s1[pos:]
+    return s1
+
+s1 = input("Enter first string: ")
+s2 = input("Enter second string: ")
+print("Final string: "+insert_string_middle(s1,s2))
+
+
+
+
+5
+'''
+Python program to sort a string lexicographically.
+'''
+s = input("Enter the string: ")
+l = list(s)
+l.sort()
+print ("".join(l))
+
+
+
+6
+'''
+Python program to count repeated characters in a string.
+'''
+s = input("Enter the string: ")
+freq = {}
+for i in s:
+    if i in freq:
+        freq[i] += 1
+    else:
+        freq[i] = 1
+for key, value in freq.items():
+    if value > 1:
+        print(key, value)
+
+
+
+7
+'''
+Python function that prints out the first ‘n’ rows of Pascal's triangle. ‘n’ is user input
+'''
+
+def Pascal_Triangle(n):
+    for i in range(n):
+        print(" "*(n-i),end="")
+        for j in range(i+1):
+            print(str(ncr(i,j))+" ", end = "")
+        print()
+    
+def fact(n):
+    p = 1
+    for i in range(1,n+1):
+        p = p*i
+    return p
+
+def ncr(n,r):
+    return int(fact(n)/fact(r)/fact(n-r))
+
+n = int(input("Enter the number of rows: "))
+Pascal_Triangle(n)
+
+
+
+8
+'''
+Python function that accepts a hyphen-separated sequence of words as input and prints the
+words in a hyphen-separated sequence after sorting them alphabetically.
+'''
+
+def func(s):
+    l = s.split("-")
+    l.sort()
+    print("-".join(l))
+    
+s = input("Enter the sequence of words: ")
+func(s)
+
+
+
+9
+'''
+Python function to merge two sorted arrays.
+'''
+
+def merge(a,b):
+    ans=[]
+    i, j = 0, 0
+    while i < len(a) and j < len(b):
+            if a[i] < b[j]:
+                ans.append(a[i])
+                i = i + 1
+            else:
+                ans.append(b[j])
+                j = j + 1
+    if i == len(a):
+        while j < len(b):
+            ans.append(b[j])
+            j = j + 1
+    if j == len(b):
+        while i < len(a):
+            ans.append(a[i])
+            i = i + 1
+    return ans
+
+a1 = list(map(int, input("Enter first array: ").split()))
+a2 = list(map(int, input("Enter second array: ").split()))
+print("Merged array:",merge(a1,a2))
+
+
+
+10
+'''
+Python function that accepts a string and calculate the number of upper case letters and
+lower case letters.
+'''
+
+def str_count(s):
+    u, l = 0, 0
+    for i in s:
+        if ord(i)>=65 and ord(i)<=90:
+            u = u + 1
+        if ord(i)>=97 and ord(i)<=122:
+            l = l + 1
+    return u, l
+
+s = input("Enter the string: ")
+print("Upper case letters:", str_count(s)[0])
+print("Lower case letters:", str_count(s)[1])
+
+
+
+11
+'''
+Python program which accepts a sequence of comma separated 4 digit binary numbers as
+its input and print the numbers that are divisible by 5 in a comma separated sequence.
+'''
+
+s = input("Enter the sequence: ")
+l = s.split(",")
+ans = []
+for i in l:
+    dec = 0
+    for j in range(len(i)):
+        dec += pow(2,len(i)-j-1)*int(i[j])
+    if dec%5==0:
+        ans.append(i)
+        
+print("Divisible by 5: "+",".join(ans))
+
+
+
+12
+'''
+Python program to insert a new item before the second element in an existing array.
+'''
+
+l = input("Enter the elements of list: ").split()
+i = input("Enter the new item: ")
+l.insert(1,i)
+print("New list: "+" ".join(l))
+
+
+
+13
+'''
+Python program to print alphabet pattern 'R'.
+'''
+
+size = int(input("Enter the size: "))
+up = (size+1)//2
+down = size-up
+print("*"*up)
+for i in range(up-2):
+    print("*"+" "*(up-1)+"*")
+print("*"*up)
+for i in range(down):
+    print("*"+" "*i+"*")
+
+
+
+14
+'''
+Python program to get the number of occurrences of a specified element in an array.
+'''
+
+l = input("Enter the array: ").split()
+e = input("Enter the element: ")
+print("No of occurence: "+str(l.count(e)))
+
+
+
+15
+'''
+Python program to remove a specified item using the index from an array.
+'''
+
+l = input("Enter the array: ").split()
+e = int(input("Enter the index to remove: "))
+if e <= len(l):
+    l.pop(e)
+    print("New array: "+" ".join(l))
+else:
+    print("Array index out of range")
+
+
+
+16
+'''
+Python program to convert an array to an ordinary list with the same items
+'''
+
+from array import *
+arr = array('i',[1,2,3,4,5])
+l = arr.tolist()
+print(l)
+
+
+
+17
+'''
+Python program to remove duplicates from a list of lists.
+'''
+
+def remove_duplicates(l):
+    ans = []
+    for i in range(len(l)):
+        found = 0
+        for j in range(i):
+            if(l[i]==l[j]):
+                found = 1
+        if found==0:
+            ans.append(l[i])
+    return ans
+
+l = [[10,20],[40],[30,56,25],[10,20],[33],[40]]
+print(remove_duplicates(l))
+
+
+
+18
+'''
+Python program to find the list in a list of lists whose sum of elements is the highest
+'''
+
+def max_sum(l):
+    ans = l[0]
+    s_max = sum(ans)
+    for i in l:
+        if sum(i) > s_max:
+            s_max = sum(i)
+            ans = i
+    return ans
+
+l = [[1,2,3],[4,5,6],[10,11,12],[7,8,9]]
+print(max_sum(l))
+
+
+
+
+19
+'''
+Python program to insert a given string at the beginning of all items in a list.
+'''
+
+l = input("Enter the list: ").split()
+s = input("Enter the string: ")
+for i in range(len(l)):
+    l[i] = s + l[i]
+print(" ".join(l))
+
+
+
+20
+'''
+Python program to compute the similarity between two lists
+'''
+
+l1 = input("Enter first list: ").split()
+l2 = input("Enter second list: ").split()
+print("Color1 - Color2: " + " ".join([i for i in l1 if i not in l2]))
+print("Color2 - Color1: " + " ".join([i for i in l2 if i not in l1]))
+
+
+
+21
+'''
+Python program to split a list every Nth element
+'''
+
+l = input("Enter the list: ").split()
+N = int(input("Enter N: "))
+ans = []
+for i in range(N):
+    ans.append(l[i::N])
+print(ans)
+
+
+
+22
+'''
+Python program to convert a list of multiple integers into a single integer
+'''
+
+l = list(map(int,input("Enter the list: ").split()))
+ans = 0
+for i in l:
+    ans = ans*(10**len(str(i)))+i
+print(ans)
+
+
+
+23
+'''
+Python program to iterate over two lists simultaneously.
+'''
+
+a = input("Enter first list: ").split()
+b = input("Enter second list: ").split()
+for i in range(min(len(a),len(b))):
+    print(a[i],b[i])
+
+
+
+24
+'''
+Python program to create a list by concatenating a given list which range goes from 1 to n.
+'''
+
+l = input("Enter the list: ").split()
+n = int(input("Enter the value of n: "))
+ans = []
+for i in range(1,n+1):
+    for j in l:
+        ans.append(j+str(i))
+print(ans)

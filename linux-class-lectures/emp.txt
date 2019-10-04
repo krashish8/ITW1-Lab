@@ -1,0 +1,8 @@
+2233|a.k. shukla    |g.m.    |sales      |12/12/52|6000
+5678|sumit Chand    |d.g.m   |marketing  |21/04/56|8000
+0110|v.k. agarwal   |manger  |marketing  |23/07/21|7500
+1324|j.b. saksena   |g.m.    |marketing  |11/11/58|8000
+5612|p.k. sinha     |manager |sales      |05/03/21|6002
+8765|s.k. pal       |analyst |finance    |12/12/59|3200
+2693|h. p. gupta    |a.p.    |academic   |10/02/63|7500
+8564|t. dutta       |a.p.    |academic   |14/02/64|8000

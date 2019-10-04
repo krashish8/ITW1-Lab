@@ -1,0 +1,189 @@
+1. Write a Python program to read an entire text file.
+
+        with open('test.txt') as f:
+            print(f.read())
+
+
+2. Write a Python program to read first n lines of a file.
+
+
+        with open('test.txt') as f:
+            n = input("Enter Number of line")
+            for i in range(int(n)):
+                try:
+                    print(f.readline(), end="")
+                except:
+                    break
+
+
+3. Write a Python program to append text to a file and display the text.
+Input: Content of myfile.txt i.e. Hello everyone !
+Output: Hello everyone !
+This is ITW1 class.
+
+
+        s = input("Enter string to append")
+
+        with open('myfile.txt', 'a') as f:
+            f.write('\n')
+            f.write(s)
+
+        with open('myfile.txt') as f:
+            print(f.read())
+
+
+4. Write a Python program to read last n lines of a file.
+
+        with open('test.txt') as f:
+            n = int(input("Enter number of lines to read from last"))
+            try:
+                for i in f.readlines()[-n:]:
+                    print(i, end='')
+            except:
+                print('ERROR')
+
+5. Write a Python program to remove an empty tuple(s) from a list of tuples.
+
+6. Write a Python program to count the number of lines in a text file.
+Input: Content of test.txt
+Output: Number of lines in the file: 4
+
+
+        with open('test.txt') as f:
+            print(len(f.readlines()))
+
+
+7. Write a Python program to count the frequency of words in a file.
+Input: Contect of file text.txt
+
+
+        with open('test.txt') as f:
+            freq = dict()
+
+            for i in f.read().split():
+
+                if i in freq:
+                    freq[i] += 1
+                else:
+                    freq[i] = 1
+
+
+        for key, val in freq.items():
+            print(key, ':', val)
+
+
+8. Write a Python program to get the file size of a text file in bytes.
+Input: test.txt
+Output: File size in bytes of a file test.txt is: 765
+
+        import os.path
+        print(os.path.getsize('test.txt'))
+
+
+9. Write a Python program to write a list content to a file.
+Input: color = ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']
+Output: Red
+Green
+White
+Black
+Pink11. Write a Python program to read a random line from a file.
+Example : Input: Content of file test.txt
+Output: languages such as C++ or Java.
+Yellow
+
+
+
+        color = ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']
+
+        with open('output.txt', 'w') as f:
+            for i in color:
+                f.write(i + '\n')
+
+        with open('output.txt') as f:
+            print(f.read())
+
+
+10. Write a Python program to combine each line from first file with the corresponding line in second
+file.
+Example: Input: Content of text file1 i.e., (Python Exercises, Java Exercises) and Content of text
+file_2 i.e., (Red, Green)
+Output: Python Exercises
+Red
+Java Exercises
+Green
+
+        with open('file1.txt') as f1:
+            with open('file2.txt') as f2:
+                for i, j in zip(f1.readlines(), f2.readlines()):
+                    print(i, end="")
+                    print(j, end="")
+
+
+11. Write a Python program to read a random line from a file.
+Example : Input: Content of file test.txt
+Output: languages such as C++ or Java.
+
+
+        import random
+
+        with open('test.txt') as f:
+            lines = f.readlines()
+            print(lines[random.randrange(len(lines))], end="")
+
+
+12. Write a program that accepts sequence of lines as input and prints the lines after making all
+characters in the sentence capitalized.
+Example: Input: Hello everyone
+Practice makes perfect
+Output: HELLO EVERYONE
+PRACTICE MAKES PERFECT
+
+
+        l = [input().upper() for  i in range(int(input("Enter number of lines:")))]
+        for i in l:
+            print(i) 
+
+
+
+
+13. Write a python code to split the word from the input file.
+Example: Input: Python Exercises
+Java Exercises
+Output: ['Python', 'Exercises']
+['Java', 'Exercises']
+
+
+        with open('test.txt') as f:
+            lines = f.readlines()
+            words = []
+            for i in lines:
+                words.append(i.split())
+
+        print(words)
+
+14. Write a python code to find t   tory also do the following operations:
+A. creating a new directory.
+B. create a new text file in the new directory.
+C. delete the new directory.
+
+
+        import os
+        import shutil
+
+        #current working directory
+        path = os.getcwd()
+        print(path)
+
+        #name of new directory
+        folderName = 'newDir'
+
+        #creating new directory
+        os.mkdir(folderName)
+
+        #creating file inside new directory
+        f = open(folderName + '/' + 'newfile', 'w')
+        f.close()
+
+        #removing new directory
+        shutil.rmtree(folderName)
+

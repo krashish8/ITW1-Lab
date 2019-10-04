@@ -1,0 +1,416 @@
+1
+'''
+Python program to match key values in two dictionaries
+'''
+
+def func (d1, d2):
+    print("Key-value pair present in both dictionary:")
+    for key, value in d1.items():
+        if key in d2 and d2[key]==value:
+            print(str(key) + ": " + str(value))
+
+d1 = {'key1': 1, 'key2': 3, 'key3': 2}
+d2 = {'key1': 1, 'key2': 2}
+func(d1, d2)
+
+
+
+2
+'''
+Python program to create a dictionary from two lists without losing duplicate values
+'''
+
+def merge(l1, l2):
+	d = {}
+	for i, j in zip(l1, l2):
+		d[i] = j 
+	return d 
+
+l1 = input("Enter first list: ").split()
+l2 = input("Enter second list: ").split()
+print(merge(l1, l2))
+
+
+
+3
+'''
+Python program to replace dictionary values with their sum.
+'''
+
+def rep(l):
+    for d in l:
+        n1 = d.pop('V')
+        n2 = d.pop('VI')
+        d['V + VI'] = (n1+n2)/2
+    return l
+
+l = [{'id' : 1, 'subject' : 'math', 'V' : 70, 'VI': 82},
+{'id' : 2, 'subject' : 'math', 'V' : 73, 'VI' : 74},
+{'id' : 3, 'subject' : 'math', 'V' : 75, 'VI' : 86}]
+print(rep(l))
+
+
+
+4
+'''
+Python program to sort a tuple by its float element.
+'''
+
+def func(t):
+    return sorted(t, key = lambda x: float(x[1]), reverse = True)
+
+t = [('item1', '12.20'), ('item2', '15.10'), ('item3', '24.5')]
+print(func(t))
+
+
+
+5
+'''
+Python program to remove an empty tuple(s) from a list of tuples
+'''
+
+def func(l):
+    ans = []
+    for i in l:
+        if len(i)!=0:
+            ans.append(i)
+    return ans
+
+l = [(), (), ('',), ('a', 'b'), ('a', 'b', 'c'), ('d')]
+print(func(l))
+
+
+
+6
+'''
+Python program to convert a list of tuples into a dictionary
+'''
+
+def convert(l):
+    d = {}
+    for i in l:
+        d[i[1]] = i[0]
+    return d
+
+l = ((2, "w"),(3, "r"))
+print(convert(l))
+
+
+
+7
+'''
+Python program to count the elements in a list until an element is a tuple
+'''
+
+def count(l):
+    c = 0
+    for i in l:
+        if type(i)==type(tuple()):
+            break
+        c += 1
+    return c
+
+l = [10,20,30,(10,20),40]
+print(count(l))
+
+
+
+8
+'''
+Python program to find maximum and the minimum value in a set
+'''
+
+s = set(map(int, input("Enter the set: ").split()))
+print(max(s))
+print(min(s))
+
+
+
+9
+'''
+Python program to create set difference, union, and intersection of sets
+'''
+
+s1 = set(map(int, input("Enter first set: ").split()))
+s2 = set(map(int, input("Enter second set: ").split()))
+print("Difference: {}, Union: {}, Intersection: {}".format(s1-s2, s1|s2, s1&s2))
+
+
+
+10
+'''
+Python program to make a chain of function decorators (bold, italic, underline etc.).
+'''
+
+def make_bold(fn):
+    def wrapped():
+        return "<b>" + fn() + "</b>"
+    return wrapped
+
+def make_italic(fn):
+    def wrapped():
+        return "<i>" + fn() + "</i>"
+    return wrapped
+
+def make_underline(fn):
+    def wrapped():
+        return "<u>" + fn() + "</u>"
+    return wrapped
+
+@make_bold
+@make_italic
+@make_underline
+def hello():
+    return "hello world"
+print(hello())
+
+
+
+11
+'''
+Python program to calculate the harmonic sum of n-1.
+'''
+
+n = int(input("Enter the value of n: "))
+s = 0
+for i in range(1,n):
+    s += 1/i
+print(s)
+
+
+
+12
+'''
+Python program of recursion list sum.
+'''
+
+def recursion_sum(l):
+    ans = 0
+    for i in l:
+        if type(i)==type(list()):
+            ans += recursion_sum(i)
+        else:
+            ans += i
+    return ans
+
+l = [1, 2, [3,4], [5,6]]
+print(recursion_sum(l))
+
+
+
+13
+'''
+Python program for binary search
+'''
+
+a = list(map(int, input("Enter the sorted list of numbers: ").split()))
+s = int(input("Enter the number to search: "))
+l, r = 0, len(a)
+while l <= r:
+    mid = (l+r)//2
+    if a[mid] == s:
+        print("%d was found at index %d" % (s, mid))
+        break
+    elif s > a[mid]:
+        l = mid + 1
+    else:
+        r = mid - 1
+if l > r:
+    print("Element not found")
+
+
+
+14
+'''
+Python program to sort a list of elements using the bubble sort algorithm
+'''
+
+a = list(map(int, input("Enter the list: ").split()))
+n = len(a)
+for i in range(0,n-1):
+    for j in range(0,n-i-1):
+        if a[j] > a[j+1]:
+            a[j], a[j+1] = a[j+1], a[j]
+print(a)
+
+
+
+15
+'''
+Python program to sort a list of elements using the selection sort algorithm
+'''
+
+a = list(map(int, input("Enter the list: ").split()))
+n = len(a)
+for i in range(0,n-1):
+    m = a[i]
+    pos = i
+    for j in range(i+1,n):
+        if m > a[j]:
+            m = a[j]
+            pos = j
+    a[i], a[pos] = a[pos], a[i]
+print(a)
+
+
+
+16
+'''
+Python program to sort a list of elements using the merge sort algorithm
+'''
+
+def merge(a, start, mid, end):
+    p, q = start, mid + 1
+    arr = []
+    for i in range(start, end+1):
+        if p > mid:
+            arr.append(a[q])
+            q += 1
+        elif q > end:
+            arr.append(a[p])
+            p += 1
+        elif a[p] < a[q]:
+            arr.append(a[p])
+            p += 1
+        else:
+            arr.append(a[q])
+            q += 1
+    for i in range(start, end + 1):
+        a[i] = arr[i-start]
+
+
+def merge_sort(a, start, end):
+    if (start < end):
+        mid = (start + end)//2
+        merge_sort(a, start, mid)
+        merge_sort(a, mid+1, end)
+        merge(a, start, mid, end)
+
+a = list(map(int, input("Enter the list: ").split()))
+merge_sort(a, 0, len(a)-1)
+print(a)
+
+
+
+17
+'''
+Python program using functions that asks the user for a long string containing multiple
+words. Print back to the user the same string, except with the words in backwards order
+'''
+
+def reverseWords(s):
+    l = list(s.split())
+    return " ".join(l[::-1])
+    
+s = input("Enter the string: ")
+print(reverseWords(s))
+
+
+
+18
+'''
+Define a function reverse() that computes the reversal of a string
+'''
+
+def reverse(s):
+    ans = ""
+    for i in s:
+        ans  = i + ans
+    return ans
+
+s = input("Enter the string: ")
+print(reverse(s))
+
+
+
+19
+'''
+Python program to find the available built-in modules
+'''
+import sys
+x=sys.builtin_module_names
+print("List of available modules:")
+print(x)
+
+
+
+20
+Python program to get the size of an object in bytes by using module “sys”.
+
+import sys
+def memSize(s):
+    return sys.getsizeof(s)
+
+s = input("Enter the string: ")
+print("Memory size of '%s' = %d bytes" % (s, memSize(s)))
+
+
+
+
+21
+'''
+Using the module random and time in python generate a random date between given start and end
+dates.
+'''
+
+from datetime import timedelta
+import random
+
+date1 = input("Enter start date: ")
+date2 = input("Enter end date: ")
+d_format = "%m/%d/%Y"
+d0 = datetime.strptime(date1, d_format)
+d1 = datetime.strptime(date2, d_format)
+diff = (d1 - d0).days
+add = random.randint(1,diff)
+ans =  d0 + timedelta(days=add)
+print("{:%m/%d/%Y}".format(ans))
+
+
+
+22
+'''
+Generate three random password string of length 10 with special characters, letters, and digits by
+using python modules (random and string).
+'''
+
+import random
+import string
+
+s = string.ascii_letters + string.digits + string.punctuation
+for i in range(10):
+    print(random.choice(s), end="")
+
+
+
+23
+'''
+python code using module “uuid” to generate universally unique secure randon string id of
+length 8.
+'''
+
+import uuid
+
+print(str(uuid.uuid1())[:8])
+
+
+
+24
+'''
+python code using module “random” to generate a 100 Lottery tickets and pick two lucky
+tickets from it as a winner.
+'''
+
+import random
+
+def generate():
+    l = []
+    while len(l)<100:
+        x = random.randint(1000000000,9999999999)
+        if x in l:
+            continue
+        l.append(x)
+    return l
+        
+tickets = generate()
+print(random.choice(tickets), random.choice(tickets))

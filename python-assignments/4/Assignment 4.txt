@@ -1,0 +1,579 @@
+    Assignment-4
+
+1. Write a python class to show how we can changes to the class variable in python. Also write a code to create an empty class.
+
+
+class Py1:
+    var1 = 10   # Class Variable
+
+obj1 = Py1()
+print("Initial var1:", obj1.var1)
+obj1.var1 = 20      # Changing class variable
+print("Changed var1:", obj1.var1)
+
+# Empty Class
+class Empty:
+    pass
+
+obj2 = Empty()
+
+
+
+
+
+2. Write a python class to convert Hexadecimal to Decimal using class creation.
+Example: Input Hexadecimal: C77, Output Decimal: 3191
+
+
+class Num:
+    def __init__(self, n):
+        self.n = n
+    def value(c):
+        if c >= '0' and c <= '9':
+            return ord(c)-48
+        else:
+            return (ord(c)-65+10)
+    
+    def hexToDec(self):
+        dec = 0
+        c = 0
+        s = self.n
+        for i in range(len(s)-1, -1, -1):
+            dec += Num.value(s[i])*(16**c)
+            c += 1
+        return dec
+
+n = input("Enter a number in hexadecimal: ")
+obj = Num(n)
+print("Decimal form:",obj.hexToDec())
+
+
+
+
+3. Write a python class to check if a class is a subclass of another class or not.
+
+
+class Class1:
+    pass
+
+class Class2 (Class1):
+    pass
+
+class Check:
+        def __init__(self,c1,c2):
+                self.c1=c1
+                self.c2=c2
+        def ck(self):
+                if (issubclass(self.c1,self.c2)):
+                    print(self.c1,"is subclass of",self.c2)
+                else
+                    print(self.c1,"is not subclass of",self.c2)
+                
+obj = Check(Class2, Class1)
+obj.ck()
+
+
+
+
+4. Write a python class to access a member through super and parent class name.
+
+
+class Class1(object):
+    x = 10
+    def __init__(self):
+        print("Parent")
+
+class Class2(Class1):
+    def __init__(self):
+        super().__init__()
+        print(super().x)
+        Class1.__init__(self)
+        print(Class1.x)
+
+obj = Class2()
+
+
+
+
+5. Write a Python class named Rectangle constructed by a length and width and a method which will compute the area of a rectangle.
+
+
+class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    
+    def area(self):
+        return self.length * self.width
+
+obj = Rectangle(4,5)
+print(obj.area())
+
+
+
+
+6. Write a Python class to reverse a string word by word.
+Example: Input string: hello, Output string: olleh
+
+
+class String1:
+    def __init__(self, str):
+        self.str = str
+    
+    def reverse(self):
+        s = ""
+        for i in self.str:
+            s = i + s
+        return s
+    
+strobj = String1("hello")
+print(strobj.reverse())
+
+
+
+
+7. Write a Python class to find the three elements that sum to zero from a set of n real numbers.
+Example: Input array : [-25, -10, -7, -3, 2, 4, 8, 10]
+Output : [[-10, 2, 8], [-7, -3, 10]]
+
+
+class Num:
+    def __init__(self, arr):
+        self.arr = arr
+    
+    def sumZero(self):
+        a = self.arr
+        l = []
+        for i in range(0,len(a)):
+            for j in range(i+1, len(a)):
+                for k in range(j+1, len(a)):
+                    if a[i] + a[j] + a[k] == 0:
+                        l.append([a[i],a[j],a[k]])
+        return l
+    
+s = Num([-25, -10, -7, -3, 2, 4, 8, 10])
+print(s.sumZero())
+
+
+
+
+8. Write a Python class to find a pair of elements (indices of the two numbers) from a given array whose sum equals a specific target number.
+Example: Input: Numbers: [10,20,10,40,50,60,70], target=50
+Output: 3, 4
+
+
+class PairSum:
+    def __init__(self, arr):
+        self.arr = arr
+    
+    def findSum(self, target):
+        a = self.arr
+        l = []
+        for i in range(0, len(a)):
+            for j in range(i+1, len(a)):
+                if (a[i] + a[j] == target):
+                    l.append([i+1, j+1])
+        return l
+
+arr = PairSum([10,20,10,40,50,60,70])
+print(arr.findSum(50))
+
+
+
+
+9. Write a NumPy program to sort a given array of shape 2 along the first axis, last axis and on flattened array.
+Example: Expected Output:
+Original array:
+[[10 40]
+[30 20]]
+Sort the array along the first axis:
+[[10 20]
+[30 40]]
+Sort the array along the last axis:
+[[10 40]
+[20 30]]
+Sort the flattened array:
+[10 20 30 40]
+
+
+import numpy as np
+arr = np.array([10,45,1,65,78,10,56,4,5]).reshape(3,3)
+print("Array:")
+print(arr)
+print("Sorted along first axis:")
+print(np.sort(arr, axis = 0))
+print("Sorted along last axis: ")
+print(np.sort(arr, axis = -1))
+print("Flattened array:")
+print(np.sort(arr.flat))
+
+
+
+
+10. Write a NumPy program to compute the trigonometric sine, cosine and tangent array of angles given in degrees. Note: Angles are 0, 30, 45, 60, 90.
+Example: Output:
+sine: array of angles given in degrees
+[ 0. 0.5 0.70710678 0.8660254 1. ]
+cosine: array of angles given in degrees
+[ 1.00000000e+00 8.66025404e-01 7.07106781e-01 5.00000000e-01 6.12323400e-17]
+tangent: array of angles given in degrees
+[ 0.00000000e+00 5.77350269e-01 1.00000000e+00 1.73205081e+00 1.63312394e+16]
+11. Write a NumPy program compute the sum of the diagonal element of a given array.
+Exanple: Original matrix: [[0 1 2]
+[3 4 5]]
+Diagonal sum: 4
+
+
+import numpy as np
+angle = [0,30,45,60,90]
+angle = [i*np.pi/180 for i in angle]
+print("sin:", np.sin(angle))
+print("cos:", np.cos(angle))
+print("tan:", np.tan(angle))
+
+
+
+11. Write a NumPy program compute the sum of the diagonal element of a given array.
+Exanple: Original matrix: [[0 1 2]
+[3 4 5]]
+Diagonal sum: 4
+
+
+import numpy as np
+arr = np.array([0,1,2,3,4,5]).reshape(2,3)
+sum = 0
+for i in range(0,2):
+        sum=sum+arr[i][i]
+print(sum)
+
+
+
+
+12. Write a NumPy program to create a 2d array with 1 on the border and 0 inside.
+Example: Expected Output:
+Original array:
+[[ 1. 1. 1. 1. 1.]
+[ 1. 1. 1. 1. 1.]
+[ 1. 1. 1. 1. 1.]
+[ 1. 1. 1. 1. 1.]
+[ 1. 1. 1. 1. 1.]]
+1 on the border and 0 inside in the array
+[[ 1. 1. 1. 1. 1.]
+[ 1. 0. 0. 0. 1.]
+[ 1. 0. 0. 0. 1.]
+[ 1. 0. 0. 0. 1.]
+[ 1. 1. 1. 1. 1.]]
+
+
+import numpy as np
+n = int(input("Enter no of rows: "))
+l = [1 for i in range(0, n*n)]
+arr = np.array(l).reshape(n,n)
+print(arr)
+for i in range(1, n-1):
+    for j in range(0, n):
+        if j>0 and j<n-1:
+            arr[i][j] = 0
+print(arr)
+
+
+
+
+13. Write a NumPy program to find the number of elements of an array, length of one array element in
+bytes and total bytes consumed by the elements.
+Example: Array = [1,2,3]
+Size of the array: 3
+Length of one array element in bytes: 8
+Total bytes consumed by the elements of the array: 24
+
+
+import numpy as np
+arr = np.array([1,2,3,4,5])
+print("No. of elements:", arr.size)
+print("Length of one array element:", arr.itemsize)
+print("Total bytes:", arr.size*arr.itemsize)
+
+
+
+
+14. Write a NumPy program to create a record array from a (flat) list of arrays.
+Example: Arrays: [1,2,3,4], ['Red', 'Green', 'White', 'Orange'], [12.20,15,20,40]
+Expected Output:
+(1, 'Red', 12.2)
+(2, 'Green', 15.0)
+(3, 'White', 20.0)
+
+
+import numpy as np
+a1 = [1,2,3,4]
+a2 = ['Red', 'Green', 'White', 'Orange']
+a3 = [12.20,15,20,40]
+a1 = np.asarray(a1).reshape(4,1)
+a2 = np.asarray(a2).reshape(4,1)
+a3 = np.asarray(a3).reshape(4,1)
+print(np.hstack((a1,a2,a3)))
+
+
+
+15. Write a NumPy program to take values from a source array and put them at specified indices of
+another array.
+Example: Input: [ 10. 10. 20. 30. 30.]
+Output: Put 0 and 40 in first and fifth position of the above array
+Array x after put two values: [ 0. 10. 20. 30. 40.]
+
+
+import numpy as np
+source = np.array([0,40])
+arr = np.array([10,10,20,30,30])
+arr.put([0,4],source)
+print(arr)
+
+
+
+
+16. Write a Pandas program to add, subtract, multiple and divide two Pandas Series.
+Example: Input Series: [2, 4, 6, 8, 10], [1, 3, 5, 7, 9]
+Output: add: 3, 7, 11, 15, 19 subtract: 1,1,1,1,1
+multiply: 2, 12, 30, 56, 90 divide: 2.000000, 1.333333, 1.200000, 1.142857, 1.111111
+
+
+import pandas as pd
+s1 = pd.Series([2,4,6,8,10])
+s2 = pd.Series([1,3,5,7,9])
+print("Add:")
+print(s1+s2)
+print("Subtract:")
+print(s1-s2)
+print("Multiply:")
+print(s1*s2)
+print("Divide:")
+print(s1/s2)
+
+
+
+
+17. Write a Python program to convert a NumPy array to a Pandas series.
+Example: Sample Series:
+NumPy array:
+[10 20 30 40 50]
+Converted Pandas series:
+0 10
+1 20
+2 30
+3 40
+4 50
+dtype: int64
+
+
+import numpy as np
+import pandas as pd
+arr = np.array([10,20,30,40,50])
+s = pd.Series(arr)
+print(s)
+
+
+
+
+18. Write a Pandas program to get the powers of an array values element-wise.
+Note: First array elements raised to powers from second array
+Sample data: {'X':[78,85,96,80,86], 'Y':[84,94,89,83,86],'Z':[86,97,96,72,83]}
+Expected Output:
+X Y Z
+0 78 84 86
+1 85 94 97
+2 96 89 96
+3 80 83 72
+4 86 86 83
+
+
+import pandas as pd
+arr = pd.DataFrame({'X':[78,85,96,80,86], 'Y':[84,94,89,83,86], 'Z':[86,97,96,72,83]})
+print(arr)
+
+
+
+
+19. Write a Pandas program to create and display a DataFrame from a specified dictionary data which
+has the index labels.
+Sample DataFrame:
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+Output:
+attempts name qualify score
+a 1 Anastasia yes 12.5
+b 3 Dima no 9.0
+c 2 Katherine yes 16.5
+d 3 James no NaN
+e 2 Emily no 9.0
+f 3 Michael yes 20.0
+g 1 Matthew yes 14.5
+h 1 Laura no NaN
+i 2 Kevin no 8.0
+j 1 Jonas yes 19.0
+
+
+import numpy as np
+import pandas as pd
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data, index = labels)
+print(df)
+
+
+
+
+20. Write a Pandas program to get the first 3 rows of a given DataFrame.
+Example: Input: Sample DataFrame from question 19.
+Output: First three rows of the data frame:
+attempts name qualify score
+a 1 Anastasia yes 12.5
+b 3 Dima no 9.0
+c 2 Katherine yes 16.5
+
+
+import numpy as np
+import pandas as pd
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data, index = labels)
+print(df.head(3))
+
+
+
+
+21. Write a Pandas program to select the rows where the score is missing, i.e. is NaN.
+Sample DataFrame_1:
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+Output: Rows where score is missing:
+attempts name qualify score
+d 3 James no NaN
+h 1 Laura no NaN
+
+
+import numpy as np
+import pandas as pd
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data, index = labels)
+print(df[df['score'].isnull()])
+
+
+
+
+22. Write a Pandas program to select the rows the score is between 15 and 20 (inclusive).
+Example: Input: Sample DataFrame_1 from question 21.
+Output: Rows where score between 15 and 20 (inclusive):
+attempts name qualify score
+c 2 Katherine yes 16.5
+f 3 Michael yes 20.0
+j 1 Jonas yes 19.0
+
+
+import numpy as np
+import pandas as pd
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data, index = labels)
+print(df [(df['score'] >= 15) & (df['score'] <= 20)])
+
+
+
+
+23. Write a Pandas program to select the rows where number of attempts in the examination is less than 2 and score greater than 15.
+Example: Example: Input: Sample DataFrame_1 from question 21.
+Rows where score between 15 and 20 (inclusive):
+attempts name qualify score
+c 2 Katherine yes 16.5
+j 1 Jonas yes 19.0
+
+
+import numpy as np
+import pandas as pd
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura',
+'Kevin', 'Jonas'],
+'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data, index = labels)
+print(df[(df['attempts'] <= 2) & (df['score'] > 15)])
+
+
+
+
+24. Write python program to plot histogram, bar chart, line graph, scatter graph for some sample data.
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+
+x = [5,2,9,4,7]
+y = [10,5,8,4,2]
+
+plt.plot(x,y, marker='o', linestyle = '--',color='g',label='line')
+plt.legend(loc = 'lower right')
+
+a, b = [[3,6,7,3],[7,4,7,8]]
+
+plt.scatter(a,b)
+
+plt.bar(x,y, color='y')
+
+z = np.random.normal(size = 1000)
+plt.hist(z, bins = 50)
+
+
+
+
+25. Write a python program to handle exception error using try and except, else, finally, and raise with in
+a single program.
+Example: Program using function which returns a/b, like c = ((a+b) / (a-b)).
+
+
+def func(a,b):
+    ans = 0
+    try:
+        ans = (a+b)/(a-b)
+    except ZeroDivisionError:
+        print("Error: Can't Divide by Zero")
+    except:
+        print("Error")
+    else:
+        print("No Errors")
+    finally:
+        return ans
+
+print(func(10,20))
+print()
+print(func(10,'20'))
+print()
+print(func(10,10))
+
+
+

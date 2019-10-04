@@ -1,0 +1,11 @@
+﻿import pandas as pd
+s1 = pd.Series([2,4,6,8,10])
+s2 = pd.Series([1,3,5,7,9])
+print("Add:")
+print(s1+s2)
+print("Subtract:")
+print(s1-s2)
+print("Multiply:")
+print(s1*s2)
+print("Divide:")
+print(s1/s2)
