@@ -4,5 +4,5 @@ The repository contains the Lab files, Lecture files and Assignment files of the
 
 ### Details
 
-* Unix/Linux
+* Unix/Linux (Bash Scripting)
 * Python
